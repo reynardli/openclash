@@ -15,16 +15,26 @@ dns:
   use-hosts: true
   fake-ip-range: 198.18.0.1/16
   fake-ip-filter:
+    # 1. 贵机场 (ytoo) 专线放行
     - "+.163cdn-agent.net"
+    # 2. 便宜机场 (良心云) 精准放行的 4 大核心服务器域名
+    - "+.lxyun.xyz"
+    - "+.7770006.xyz"
+    - "+.777078.xyz"
+    - "+.7770008.xyz"
+    # 本地局域网放行
     - "*.lan"
     - "*.local"
   nameserver:
     - 223.5.5.5
     - 119.29.29.29
-  # 关键：强制节点服务器域名走本地 DNS，触发 hosts 映射解析
+  # 关键：首选 7874 触发 ytoo 的 hosts 映射，追加公共 DNS 保证良心云节点正常物理寻址
   proxy-server-nameserver:
     - udp://127.0.0.1:7874
+    - 223.5.5.5
+    - 119.29.29.29
 
+# ytoo AnyTLS 核心映射
 hosts:
   6c106cf4-cb0f-11f01.163cdn-agent.net: 4406d026-59f4-11f1.163cdn-agent.net
   6c106cf4-cb0f-11f02.163cdn-agent.net: 4406d026-59f4-11f2.163cdn-agent.net
