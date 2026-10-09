@@ -22,7 +22,7 @@ dns:
     - 223.5.5.5
     - 119.29.29.29
 
-# 关键：贵机场专线 AnyTLS 节点的底层解析映射
+# 贵机场专线 AnyTLS 节点的底层映射
 hosts:
   6c106cf4-cb0f-11f01.163cdn-agent.net: 4406d026-59f4-11f1.163cdn-agent.net
   6c106cf4-cb0f-11f02.163cdn-agent.net: 4406d026-59f4-11f2.163cdn-agent.net
