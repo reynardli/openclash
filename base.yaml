@@ -1,3 +1,28 @@
+port: 7890
+socks-port: 7891
+redir-port: 7892
+mixed-port: 7893
+allow-lan: true
+mode: rule
+log-level: info
+unified-delay: true
+
+dns:
+  enable: true
+  ipv6: false
+  enhanced-mode: fake-ip
+  listen: 0.0.0.0:7874
+  use-hosts: true
+  fake-ip-range: 198.18.0.1/16
+  fake-ip-filter:
+    - "+.163cdn-agent.net"
+    - "*.lan"
+    - "*.local"
+  nameserver:
+    - 223.5.5.5
+    - 119.29.29.29
+
+# 关键：贵机场专线 AnyTLS 节点的底层解析映射
 hosts:
   6c106cf4-cb0f-11f01.163cdn-agent.net: 4406d026-59f4-11f1.163cdn-agent.net
   6c106cf4-cb0f-11f02.163cdn-agent.net: 4406d026-59f4-11f2.163cdn-agent.net
