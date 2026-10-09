@@ -12,9 +12,9 @@ dns:
   ipv6: false
   enhanced-mode: fake-ip
   listen: 0.0.0.0:7874
-  use-hosts: true           # 关键 1：强制内核读取 hosts
+  use-hosts: true                # 【核心 1】必须开启，强制内核读取下面的 hosts 映射
   fake-ip-range: 198.18.0.1/16
-  fake-ip-filter:           # 关键 2：对齐 ytoo 原版，放行节点域名
+  fake-ip-filter:                # 【核心 2】必须放行，防止节点服务器被分配 198.18 假 IP
     - "+.163cdn-agent.net"
     - "*.lan"
     - "*.local"
@@ -22,9 +22,8 @@ dns:
     - 223.5.5.5
     - 119.29.29.29
 
-# 关键 3：对齐 ytoo 原版的 4 条核心映射
-hosts:
-  '6c106cf4-cb0f-11f01.163cdn-agent.net': '4406d026-59f4-11f1.163cdn-agent.net'
-  '6c106cf4-cb0f-11f02.163cdn-agent.net': '4406d026-59f4-11f2.163cdn-agent.net'
-  '6c106cf4-cb0f-11f03.163cdn-agent.net': '4406d026-59f4-11f3.163cdn-agent.net'
-  'c70ac48e-2018.163cdn-agent.net': 'b8e0f308-59fa-11f.163cdn-agent.net'
+hosts:                           # 【核心 3】ytoo 4 条底层专线域名映射
+  6c106cf4-cb0f-11f01.163cdn-agent.net: 4406d026-59f4-11f1.163cdn-agent.net
+  6c106cf4-cb0f-11f02.163cdn-agent.net: 4406d026-59f4-11f2.163cdn-agent.net
+  6c106cf4-cb0f-11f03.163cdn-agent.net: 4406d026-59f4-11f3.163cdn-agent.net
+  c70ac48e-2018.163cdn-agent.net: b8e0f308-59fa-11f.163cdn-agent.net
