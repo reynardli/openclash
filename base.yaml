@@ -15,33 +15,19 @@ dns:
   use-hosts: true
   fake-ip-range: 198.18.0.1/16
   fake-ip-filter:
-    # 1. 贵机场 (ytoo) 与便宜机场 (良心云) 节点域名必须放行，防止节点自身拿到假 IP
+    # 1. 贵机场 (ytoo) 专线放行
     - "+.163cdn-agent.net"
+    # 2. 便宜机场 (良心云) 核心域名放行
     - "+.lxyun.xyz"
     - "+.7770006.xyz"
     - "+.777078.xyz"
     - "+.7770008.xyz"
-    # 2. 腾讯/LOL/百度等核心直连域名强制拿真实物理 IP
-    - "+.baidu.com"
-    - "+.qq.com"
-    - "+.tencent.com"
-    - "+.myqcloud.com"
-    - "+.gtimg.cn"
-    - "+.game.qq.com"
-    - "+.lol.qq.com"
-    - "+.pvp.net"
-    - "+.riotgames.com"
-    - "+.leagueoflegends.com"
-    - "+.rumt-zh.com"
-    # 3. 局域网与系统探测放行
+    # 本地局域网放行
     - "*.lan"
     - "*.local"
-    - "+.msftconnecttest.com"
-    - "+.msftncsi.com"
   nameserver:
     - 223.5.5.5
     - 119.29.29.29
-  # 恢复通过本地 7874 端口解析节点域名，确保 100% 触发下方的 hosts CNAME 替换
   proxy-server-nameserver:
     - udp://127.0.0.1:7874
     - 223.5.5.5
